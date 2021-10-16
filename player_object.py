@@ -22,20 +22,33 @@ class Player:
             if self.frame > 7:
                 self.frame = 0
 
+        if self.state == 'right':
+            self.x = self.x + 10
+        elif self.state == 'left':
+            self.x = self.x - 10
+        elif self.state == 'up':
+            self.y = self.y + 10
+        elif self.state == 'down':
+            self.y = self.y - 10
 
 
-    def update_state(self, moveX = 0, moveY = 0):
-        xDirection = self.x - moveX
-        yDirection = self.y - moveY
-        if xDirection < 0:
+
+    def update_state(self, direction):
+        if self.state == direction:
+            return
+
+        if direction == 'right':
             self.state = 'right'
             self.image = load_image('Resource/Player/RightMove.png')
-        elif xDirection <0:
+        elif direction == 'left':
             self.state = 'left'
             self.image = load_image('Resource/Player/LeftMove.png')
-        elif yDirection > 0:
+        elif direction == 'down':
             self.state = 'down'
             self.image = load_image('Resource/Player/DownMove.png')
-        elif yDirection < 0:
+        elif direction == 'up':
             self.state = 'up'
             self.image = load_image('Resource/Player/UpMove.png')
+        elif direction =='idle':
+            self.state = 'idle'
+            self.image = load_image('Resource/Player/Idle.png')
