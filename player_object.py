@@ -14,7 +14,6 @@ class Player:
     def update(self):
         #update_animation
         self.frame = self.frame + 1
-        print(self.frame)
         if self.state == 'idle':
             if self.frame > 4:
                 self.frame = 0
@@ -49,6 +48,6 @@ class Player:
         elif direction == 'up':
             self.state = 'up'
             self.image = load_image('Resource/Player/UpMove.png')
-        elif direction =='idle':
+        elif direction == 'idle':
             self.state = 'idle'
             self.image = load_image('Resource/Player/Idle.png')

@@ -1,5 +1,6 @@
 from pico2d import *
 import player_object
+import stage
 
 
 def handle_events():
@@ -33,9 +34,10 @@ def handle_events():
 
 
 
-open_canvas()
+open_canvas(960, 640)
 
 player = player_object.Player()
+stage = stage.Stage()
 
 running = True
 while running:
@@ -45,7 +47,8 @@ while running:
     # Game Logic
     player.update()
     print(player.x)
-    # Game Rendering
+    # Game Renderin
+    stage.draw()
     player.draw()
 
     update_canvas()
