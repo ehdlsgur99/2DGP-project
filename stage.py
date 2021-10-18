@@ -12,7 +12,7 @@ class Stage:
         self.grassImages.append(load_image('Resource/Stage/grass2.png'))
         self.grassImages.append(load_image('Resource/Stage/grass3.png'))
         self.grassImages.append(load_image('Resource/Stage/grass4.png'))
-        self.grassImages.append(load_image('Resource/Stage/grass5.pngf8'))
+        self.grassImages.append(load_image('Resource/Stage/grass5.png'))
         self.grassImages.append(load_image('Resource/Stage/grass6.png'))
 
 

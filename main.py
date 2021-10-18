@@ -22,15 +22,16 @@ def handle_events():
                 player.update_state('down')
             elif event.key == SDLK_ESCAPE:
                 running = False
-        elif event.type == SDL_KEYUP:
+        elif event.type == SDL_KEYUP :
             if event.key == SDLK_RIGHT:
-                player.update_state('idle')
+                player.update_state('right')
             elif event.key == SDLK_LEFT:
-                player.update_state('idle')
+                player.update_state('left')
             elif event.key == SDLK_UP:
-                player.update_state('idle')
+                player.update_state('up')
             elif event.key == SDLK_DOWN:
-                player.update_state('idle')
+                player.update_state('down')
+
 
 
 
@@ -46,7 +47,6 @@ while running:
 
     # Game Logic
     player.update()
-    print(player.x)
     # Game Renderin
     stage.draw()
     player.draw()
