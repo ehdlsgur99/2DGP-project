@@ -1,11 +1,18 @@
 from pico2d import *
 import player_object
 import stage
+import MapInfo
 
 class DungeonScene():
     def __init__(self):
         self.player = player_object.Player()
+        self.generateMapInfo()
         self.stage = stage.Stage()
+
+
+    def generateMapInfo(self):
+        MapInfo.generateMapInfo()
+        pass
 
     def update(self):
         self.handle_events()

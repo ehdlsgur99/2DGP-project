@@ -1,7 +1,7 @@
 from pico2d import *
 import SceneManager
 
-open_canvas(960, 640)
+open_canvas(1000, 700)
 
 sceneManager = SceneManager.SceneManager()
 
