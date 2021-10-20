@@ -6,6 +6,7 @@ class Stage:
     def __init__(self):
 
         self.width, self.height = 20, 14
+        self.nowMapIndex = -1
         self.map = load_image('Resource/Stage/map.png')
         self.mapData = [
             0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
@@ -36,11 +37,6 @@ class Stage:
     def initPortal(self):
         for i in range(0, 4):
             self.portals.append(load_image('Resource/Stage/portal.png'))
-        self.portalsPos.append((400, 700))
-        self.portalsPos.append((400, 000))
-        self.portalsPos.append((100, 300))
-        self.portalsPos.append((500, 300))
-
 
     def loadResources(self):
         self.imageData.append(load_image('Resource/Stage/tree1_01.png'))
@@ -70,6 +66,27 @@ class Stage:
                 break
         # ---------------------------
 
+    def drawPortal(self):
+        #왼쪽 탐색
+        print(self.nowMapIndex)
+        nowMapIndex = 5
+        if self.nowMapIndex - 1 >= 0 and self.nowMapIndex%3 != 1:
+            if self.mapInfo[self.nowMapIndex - 1] != '0':
+                print('left')
+                self.portals[2].clip_composite_draw(0, 0, 100, 100, 0.0, 'none', 50, 350, 100, 100)
+        if int(self.nowMapIndex/3) != 1 :
+            if self.mapInfo[self.nowMapIndex + 1] != '0':
+                print('right')
+                self.portals[3].clip_composite_draw(0, 0, 100, 100, 0.0, 'none', 950, 350, 100, 100)
+        if self.nowMapIndex > 3 :
+            if self.mapInfo[self.nowMapIndex - 3] != '0':
+                print('up')
+                self.portals[0].clip_composite_draw(0, 0, 100, 100, 0.0, 'none', 500, 700, 100, 100)
+        if self.nowMapIndex < 7 :
+            if self.mapInfo[self.nowMapIndex + 3] != '0':
+                print('down')
+                self.portals[1].clip_composite_draw(0, 0, 100, 100, 0.0, 'none', 500, 50, 100, 100)
+
     def draw(self):
         w, h = 0, 0
         self.map.clip_composite_draw(0, 0, 1000, 700, 0.0, 'none',500, 350)
@@ -80,6 +97,8 @@ class Stage:
             if w>=20:
                 h = h + 1
                 w = 0
+        self.drawPortal()
+
 
 
 

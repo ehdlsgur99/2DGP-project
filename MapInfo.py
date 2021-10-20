@@ -11,7 +11,7 @@ def generateMapInfo():
                 0, 0, 0]
 
     for i in range(0, 9):
-        if random.randint(0, 1) != 0:
+        if random.randint(0, 2) != 0:
             mapindex[i] = 1
 
     # 파일에 텍스트 쓰기
