@@ -7,7 +7,7 @@ import IntroScene
 class SceneManager():
     def __init__(self):
         self.index = 0
-        self.nowScene = DungeonScene.DungeonScene()
+        self.nowScene = IntroScene.IntroScene()
 
     def changeScene(self, sceneName):
         self.nowScene.release()
@@ -19,7 +19,11 @@ class SceneManager():
             self.nowScene = DungeonScene.DungeonScene()
 
     def update(self):
-        self.nowScene.update()
+        path = self.nowScene.update()
+        if path != 'none':
+            self.changeScene(path)
+
+
 
     def render(self):
         self.nowScene.render()
