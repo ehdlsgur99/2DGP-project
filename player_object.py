@@ -5,7 +5,7 @@ class Player:
     def __init__(self):
         self.image = load_image('Resource/Player/Idle.png')
         self.moveDirection = [False, False, False, False] # r-l-u-d
-        self.x, self.y = 100, 100
+        self.x, self.y = 300, 300
         self.state = 'idle'
         self.frame = 0
         self.rad = 0.0
