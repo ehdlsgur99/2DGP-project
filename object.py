@@ -6,5 +6,13 @@ class obj():
         self.x, self.y = x,y
         self.width, self.height = width, height
         self.isVisible = True
+        self.frame = 0
+        self.nowFrame = 0
     def render(self):
         self.image.clip_composite_draw(0, 0, self.width, self.height, 0.0, 'none', self.x, self.y)
+
+    def animation(self):
+        if self.nowFrame >= self.frame:
+            self.frame = 0
+        else:
+            self.frame += 1
