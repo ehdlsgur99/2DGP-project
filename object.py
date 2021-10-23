@@ -16,3 +16,9 @@ class obj():
             self.frame = 0
         else:
             self.frame += 1
+
+    def getPos(self):
+        return self.x, self.y
+
+    def getSize(self):
+        return self.width, self.height
