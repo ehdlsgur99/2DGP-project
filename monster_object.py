@@ -150,3 +150,7 @@ class zombieMonster():
         self.image.clip_composite_draw(self.frame * 48, 0, 48, 48, self.rad, 'none', self.x, self.y, 100, 100)
         pass
 
+
+class bossMonster():
+    def __init__(self):
+        pass
