@@ -153,4 +153,51 @@ class zombieMonster():
 
 class bossMonster():
     def __init__(self):
+        self.image = load_image('Resource/Monster/Boss/Idle.png')
+        self.x, self.y = random.randint(0, 1000), random.randint(0, 700)
+        self.frame = 0
+        self.directionX = 0.0
+        self.directionY = 0.0
+        self.speed = 1.0
+        self.state = 'idle'
+        self.rad = 0
+        self.isMove = False
+        self.isVisible = True
+        self.HP = 10
+        pass
+
+    def update(self):
+        self.animation()
+        self.x += self.directionX*0.1
+        self.y += self.directionY * 0.1
+        pass
+
+    def animation(self):
+        if self.directionX > 0:
+            if not self.state == 'right':
+                self.state = 'right'
+                self.image = load_image('Resource/Monster/Zombie/RightMove.png')
+        elif self.directionX < 0:
+            if not self.state == 'left':
+                self.state = 'left'
+                self.image = load_image('Resource/Monster/Zombie/LeftMove.png')
+        elif self.directionY > 0:
+            if not self.state == 'down':
+                self.state = 'down'
+                self.image = load_image('Resource/Monster/Zombie/DownMove.png')
+        elif self.directionY < 0:
+            if not self.state == 'up':
+                self.state = 'up'
+                self.image = load_image('Resource/Monster/Zombie/UpMove.png')
+        if self.frame > 3:
+            self.frame = 0
+        else:
+            self.frame = self.frame + 1
+        pass
+
+    def render(self):
+        if self.isVisible == False:
+            return
+        self.image.clip_composite_draw(self.frame * 48, 0, 48, 48, self.rad, 'none', self.x, self.y, 100, 100)
+
         pass
