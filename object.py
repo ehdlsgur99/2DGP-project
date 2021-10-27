@@ -14,6 +14,7 @@ class obj():
     def animation(self):
         if self.nowFrame >= self.frame:
             self.frame = 0
+            return True
         else:
             self.frame += 1
 
