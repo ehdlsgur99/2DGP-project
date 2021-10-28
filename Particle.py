@@ -1,4 +1,4 @@
-from pico2d import *
+﻿from pico2d import *
 import object
 # 파티클 관리하는 배열 만들고 체크
 
@@ -15,7 +15,11 @@ class Particle():
             if p.animation() == True:
                 self.particles.remove(p)
 
-
     def render(self):
         for p in self.particles:
             p.image.clip_composite_draw(0, 0, p.width, p.height, 0.0, 'none', p.x, p.y)
+
+    def release(self):
+        pass
+
+    
