@@ -15,7 +15,6 @@ class Particle():
             if p.animation() == True:
                 self.particles.remove(p)
 
-
     def render(self):
         for p in self.particles:
             p.image.clip_composite_draw(0, 0, p.width, p.height, 0.0, 'none', p.x, p.y)

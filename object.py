@@ -1,7 +1,7 @@
 from pico2d import *
 
 class obj():
-    def __init__(self, path, x, y, width, height, frame):
+    def __init__(self, path, x, y, width, height, frame = 0):
         self.image = load_image(path)
         self.x, self.y = x,y
         self.width, self.height = width, height
