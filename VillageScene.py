@@ -15,10 +15,9 @@ class VillageScene():
         self.portal = load_image('Resource/Stage/portal.png')
         self.CM = CollisionManager.CM()
 
-        self.stone = object.obj('Resource/Stage/aaa.png', 500, 350, 1000, 700)
         self.objects = []
-        self.objects.append(self.stone)
         self.objects.append(object.obj('Resource/Stage/aaa.png', 100, 350, 1000, 700))
+        self.objects.append(object.obj('Resource/Stage/aaa.png', 300, 350, 1000, 700))
     def update(self):
         self.handle_events()
         self.player.update(self.objects)
