@@ -1,11 +1,16 @@
 from pico2d import *
+import object
 
-class CM:
-    def __init__(self):
+class CM(object):
+    def __new__(cls):
+        if not hasattr(cls, 'instance'):
+            print('create')
+            cls.instance = super(Singleton, cls).__new__(cls)
+        else:
+            print('recycle')
+        return cls.instance
 
-        pass
-
-    def checkBoxColiision(self, x1, y1, sizeX1, sizeY1, x2, y2, sizeX2, sizeY2):
+    def checkBoxColiision(x1, y1, sizeX1, sizeY1, x2, y2, sizeX2, sizeY2):
          print(x1, y1, sizeX1, sizeY1, x2, y2, sizeX2, sizeY2)
          left1 = x1 - sizeX1/2
          right1 = x1 + sizeX1/2
@@ -22,7 +27,7 @@ class CM:
          else:
              return False
 
-    def checkCircleCollisionCheck(self, x1, y1, x2, y2, size):
+    def checkCircleCollisionCheck(x1, y1, x2, y2, size):
 
         if  ((x2 - x1) * (x2 - x1) + (y2 - y1) * (y2 - y1) <= size * size):
             return True

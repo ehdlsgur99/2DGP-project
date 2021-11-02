@@ -3,14 +3,14 @@ import SceneManager
 
 open_canvas(1000, 700)
 
-sceneManager = SceneManager.SceneManager()
+SM = SceneManager.SceneManager()
 
 running = True
 while running:
     clear_canvas()
 
-    sceneManager.update()
-    sceneManager.render()
+    SM.update()
+    SM.render()
 
     update_canvas()
     delay(0.05)

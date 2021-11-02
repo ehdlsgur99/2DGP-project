@@ -8,6 +8,7 @@ import object
 import time
 import monster_object
 
+
 class DungeonScene():
     def __init__(self):
 
