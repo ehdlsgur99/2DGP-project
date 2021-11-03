@@ -1,5 +1,5 @@
 from pico2d import *
-import CollisionManager
+import Collision_Manager
 
 class Player:
     def __init__(self):
@@ -11,13 +11,12 @@ class Player:
         self.rad = 0.0
         self.prevState = 'idle'
         self.isAttack = False
-        self.CM = CollisionManager.CM()
     def draw(self):
         self.image.clip_composite_draw(self.frame * 48, 0, 48, 48, self.rad, 'none', self.x, self.y, 100, 100)
     def checkMonster(self, monsters):
         if self.isAttack:
             for m in monsters:
-                if self.CM.checkCircleCollisionCheck(m.x, m.y, self.x, self.y, 30) and m.isVisible == True:
+                if Collision_Manager.CollisionManager.checkCircleCollision(m.x, m.y, self.x, self.y, 30) and m.isVisible == True:
                     print(self.isAttack)
                     m.die()
 
@@ -49,22 +48,22 @@ class Player:
         if self.moveDirection[0] == True:
             self.x = self.x + 10
             for obj in objects:
-                if self.CM.checkCircleCollisionCheck(self.x, self.y, obj.x,obj.y, 30 ):
+                if Collision_Manager.CollisionManager.checkCircleCollision(self.x, self.y, obj.x,obj.y, 30 ):
                     self.x = self.x - 10
         if self.moveDirection[1] == True:
             self.x = self.x - 10
             for obj in objects:
-                if self.CM.checkCircleCollisionCheck(self.x, self.y, obj.x, obj.y, 30):
+                if Collision_Manager.CollisionManager.checkCircleCollision(self.x, self.y, obj.x, obj.y, 30):
                     self.x = self.x + 10
         if self.moveDirection[2] == True:
             self.y = self.y + 10
             for obj in objects:
-                if self.CM.checkCircleCollisionCheck(self.x, self.y, obj.x, obj.y, 30):
+                if Collision_Manager.CollisionManager.checkCircleCollision(self.x, self.y, obj.x, obj.y, 30):
                     self.y = self.y - 10
         if self.moveDirection[3] == True:
             self.y = self.y - 10
             for obj in objects:
-                if self.CM.checkCircleCollisionCheck(self.x, self.y, obj.x, obj.y, 30):
+                if Collision_Manager.CollisionManager.checkCircleCollision(self.x, self.y, obj.x, obj.y, 30):
                     self.y = self.y + 10
 
     def update_state(self, direction):

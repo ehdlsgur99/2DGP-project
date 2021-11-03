@@ -1,5 +1,5 @@
 from pico2d import *
-import CollisionManager
+import Collision_Manager
 import player_object
 import random
 import sys
@@ -9,7 +9,6 @@ class Stage:
 
         self.isStageChange = False
         self.isClear = False
-        self.CM = CollisionManager.CM()
         self.width, self.height = 20, 14
         self.nowMapIndex = -1
         self.map = load_image('Resource/Stage/map.png')
@@ -119,7 +118,7 @@ class Stage:
     def update(self, playerInfo, monsters):
         if self.nowMapIndex != 0 and self.nowMapIndex % 3 != 0:
             if self.mapInfo[self.nowMapIndex - 1] != '0':
-               if self.CM.checkCircleCollisionCheck(playerInfo.x, playerInfo.y ,  50, 350,50):
+               if Collision_Manager.CollisionManager.checkCircleCollision(playerInfo.x, playerInfo.y ,  50, 350,50):
                    print('update')
                    playerInfo.x = 500
                    playerInfo.y = 300
@@ -129,7 +128,7 @@ class Stage:
                    self.checkChangeScene()
         if self.nowMapIndex % 3 != 2:
             if self.mapInfo[self.nowMapIndex + 1] != '0':
-                if self.CM.checkCircleCollisionCheck(playerInfo.x, playerInfo.y ,  950, 350, 50):
+                if Collision_Manager.CollisionManager.checkCircleCollision(playerInfo.x, playerInfo.y ,  950, 350, 50):
                     print('update')
                     playerInfo.x = 500
                     playerInfo.y = 300
@@ -139,7 +138,7 @@ class Stage:
                     self.checkChangeScene()
         if self.nowMapIndex > 2 :
             if self.mapInfo[self.nowMapIndex - 3] != '0':
-                if self.CM.checkCircleCollisionCheck(playerInfo.x, playerInfo.y ,  500, 700,  50):
+                if Collision_Manager.CollisionManager.checkCircleCollision(playerInfo.x, playerInfo.y ,  500, 700,  50):
                     print('update')
                     playerInfo.x = 500
                     playerInfo.y = 300
@@ -149,7 +148,7 @@ class Stage:
                     self.checkChangeScene()
         if self.nowMapIndex < 6 :
             if self.mapInfo[self.nowMapIndex + 3] != '0':
-                if self.CM.checkCircleCollisionCheck(playerInfo.x, playerInfo.y ,  500, 50, 50):
+                if Collision_Manager.CollisionManager.checkCircleCollision(playerInfo.x, playerInfo.y ,  500, 50, 50):
                     print('update')
                     playerInfo.x = 500
                     playerInfo.y = 300

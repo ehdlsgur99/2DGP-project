@@ -1,6 +1,6 @@
 from pico2d import *
 import player_object
-import CollisionManager
+import Collision_Manager
 import object
 import time
 
@@ -13,7 +13,6 @@ class VillageScene():
         self.begin = time.time()
 
         self.portal = load_image('Resource/Stage/portal.png')
-        self.CM = CollisionManager.CM()
 
         self.objects = []
         self.objects.append(object.obj('Resource/Stage/aaa.png', 100, 350, 1000, 700))
@@ -23,7 +22,8 @@ class VillageScene():
         self.player.update(self.objects)
 
         # 포탈에 들어갔다면?
-        if self.CM.checkCircleCollisionCheck(self.player.x, self.player.y,500, 100, 100 ) :
+
+        if Collision_Manager.CollisionManager.checkCircleCollision(self.player.x, self.player.y, 500, 100, 100):
             self.changeScene = 'DungeonScene'
         return self.changeScene
 

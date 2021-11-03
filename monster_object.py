@@ -1,8 +1,7 @@
 import random
-import CollisionManager
+import Collision_Manager
 from pico2d import *
 
-CM = CollisionManager.CM()
 
 class GoblinMonster():
     def __init__(self):
@@ -54,7 +53,7 @@ class GoblinMonster():
             self.frame = self.frame + 1
 
     def checkPlayer(self, player):
-        if CM.checkCircleCollisionCheck(player.x, player.y, self.x, self.y, 100):
+        if Collision_Manager.CollisionManager.checkCircleCollision(player.x, player.y, self.x, self.y, 100):
             moveXVec = player.x - self.x
             moveYVec = player.y - self.y
             dis = math.sqrt(math.pow(moveXVec, 2)) + math.sqrt(math.pow(moveYVec, 2))
@@ -128,7 +127,7 @@ class zombieMonster():
             self.frame = self.frame + 1
 
     def checkPlayer(self, player):
-        if CM.checkCircleCollisionCheck(player.x, player.y, self.x, self.y, 100):
+        if Collision_Manager.CollisionManager.checkCircleCollision(player.x, player.y, self.x, self.y, 100):
             moveXVec = player.x - self.x
             moveYVec = player.y - self.y
             dis = math.sqrt(math.pow(moveXVec, 2)) + math.sqrt(math.pow(moveYVec, 2))
