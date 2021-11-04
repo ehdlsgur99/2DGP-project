@@ -5,9 +5,15 @@ import DungeonScene
 import IntroScene
 
 class SceneManager():
-    def __init__(self):
-        self.index = 0
-        self.nowScene = IntroScene.IntroScene()
+
+    index = 0
+    nowScene = IntroScene.IntroScene()
+    _sing = None
+
+    def __new__(self, *args, **kwargs):
+        if not self._sing:
+            self._sing = super(SceneManager, self).__new__(self, *args, **kwargs)
+            return self._sing
 
     def changeScene(self, sceneName):
         self.nowScene.release()

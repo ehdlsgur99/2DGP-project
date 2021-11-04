@@ -97,11 +97,9 @@ class zombieMonster():
 
     def update(self):
         self.animation()
-        self.x += self.directionX*0.1
+        self.x += self.directionX * 0.1
         self.y += self.directionY * 0.1
         # 이동
-
-        pass
 
     def animation(self):
         # 방향 체크
