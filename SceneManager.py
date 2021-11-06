@@ -6,17 +6,14 @@ import IntroScene
 
 class Scene_Manager:
 
-    index = 0
-    nowScene = IntroScene.IntroScene()
-    _sing = None
 
-    def __new__(self, *args, **kwargs):
-        if not self._sing:
-            self._sing = super(Scene_Manager, self).__new__(self, *args, **kwargs)
-            return self._sing
+
+    def __init__(self):
+        self.index = 0
+        self.nowScene = IntroScene.IntroScene()
 
     def changeScene(this, sceneName):
-        Scene_Manager.nowScene.release()
+        this.nowScene.release()
         if sceneName == 'IntroScene':
             this.nowScene = IntroScene.IntroScene()
         elif sceneName == 'VillageScene':
