@@ -3,7 +3,7 @@ import SceneManager
 
 open_canvas(1000, 700)
 
-SM =  SceneManager.Scene_Manager()
+SM = SceneManager.Scene_Manager()
 
 running = True
 while running:
