@@ -7,6 +7,7 @@ import MapInfo
 import object
 import time
 import monster_object
+import ObjectManager
 
 
 class DungeonScene():
@@ -38,6 +39,10 @@ class DungeonScene():
 
     def update(self):
 
+        # 리팩토링 부분
+        for game_object in ObjectManager.all_objects():
+            game_object.update()
+
         self.handle_events()
         self.changeScene = self.stage.update(self.player, self.monsters)
         self.player.update(self.objects)
@@ -55,6 +60,9 @@ class DungeonScene():
         return 'none'
 
     def render(self):
+        for game_object in ObjectManager.all_objects():
+            game_object.render()
+        #
         self.stage.draw()
         self.player.draw()
         for i in self.monsters:
