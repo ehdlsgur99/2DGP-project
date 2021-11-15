@@ -12,24 +12,24 @@ import ObjectManager
 
 class DungeonScene():
     def __init__(self):
-
-        self.player = player_object.Player()
         self.generateMapInfo()
-        self.stage = stage.Stage()
+
         self.changeScene = 'none'
-        self.objects = []
         self.begin = time.time()
-        self.monsters = []
+
+        self.stage = stage.Stage()
+        ObjectManager.add_object(self.stage, 0)
+        self.player = player_object.Player()
+        ObjectManager.add_object(self.player, 1)
         self.generateMonster()
 
     def generateMonster(self):
-        self.monsters = []
         if self.stage.mapInfo[self.stage.nowMapIndex] == '1':
             for i in range(random.randint(0, 5)):
                 if random.randint(0, 1):
-                    self.monsters.append(monster_object.GoblinMonster())
+                    ObjectManager.add_object(monster_object.GoblinMonster(), 2)
                 else:
-                    self.monsters.append(monster_object.zombieMonster())
+                    ObjectManager.add_object(monster_object.zombieMonster(), 2)
 
 
 
@@ -44,32 +44,24 @@ class DungeonScene():
             game_object.update()
 
         self.handle_events()
-        self.changeScene = self.stage.update(self.player, self.monsters)
-        self.player.update(self.objects)
-        self.player.checkMonster(self.monsters)
+
         if self.stage.isStageChange == True:
             self.generateMonster()
             self.stage.isStageChange = False
 
-        for i in self.monsters:
-            i.update()
-            i.checkPlayer(self.player)
-
+        self.changeScene = self.stage.update()
         if self.changeScene != 'none':
+            ObjectManager.clear()
             return self.changeScene
         return 'none'
 
     def render(self):
         for game_object in ObjectManager.all_objects():
             game_object.render()
-        #
-        self.stage.draw()
-        self.player.draw()
-        for i in self.monsters:
-            print('render')
-            i.render()
+
 
     def release(self):
+
         pass
 
     def handle_events(self):

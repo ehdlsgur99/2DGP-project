@@ -7,6 +7,11 @@ def add_object(o, layer):
 def add_objects(l, layer):
     objects[layer] += l
 
+def get_objects(layer):
+    return objects[layer]
+
+def get_object(layer):
+    return objects[layer][0]
 
 def remove_object(o):
     for i in range(len(objects)):
@@ -24,4 +29,4 @@ def clear():
 def all_objects():
     for i in range(len(objects)):
         for o in objects[i]:
-        yield o
+            yield o

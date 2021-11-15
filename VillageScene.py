@@ -1,6 +1,7 @@
 from pico2d import *
 import player_object
 import Collision_Manager
+import ObjectManager
 import object
 import time
 
@@ -19,7 +20,7 @@ class VillageScene():
         self.objects.append(object.obj('Resource/Stage/aaa.png', 300, 350, 1000, 700))
     def update(self):
         self.handle_events()
-        self.player.update(self.objects)
+        self.player.update()
 
         # 포탈에 들어갔다면?
 
