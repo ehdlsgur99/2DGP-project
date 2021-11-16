@@ -8,7 +8,7 @@ class obj():
         self.isVisible = True
         self.frame = frame
         self.nowFrame = 0
-    def render(self):
+    def draw(self):
         self.image.clip_composite_draw(0, 0, self.width, self.height, 0.0, 'none', self.x, self.y)
 
     def animation(self):

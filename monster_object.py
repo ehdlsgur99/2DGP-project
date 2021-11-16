@@ -2,8 +2,6 @@ import random
 import Collision_Manager
 from pico2d import *
 
-import ObjectManager
-
 
 class GoblinMonster():
     def __init__(self):
@@ -29,7 +27,6 @@ class GoblinMonster():
         # 이동
         self.x += self.directionX*0.1
         self.y += self.directionY * 0.1
-        self.checkPlayer()
         pass
 
     def animation(self):
@@ -55,11 +52,10 @@ class GoblinMonster():
         else:
             self.frame = self.frame + 1
 
-    def checkPlayer(self):
-        self.player = ObjectManager.get_object(1)
-        if Collision_Manager.CollisionManager.checkCircleCollision(self.player.x, self.player.y, self.x, self.y, 100):
-            moveXVec = self.player.x - self.x
-            moveYVec = self.player.y - self.y
+    def checkPlayer(self, player):
+        if Collision_Manager.CollisionManager.checkCircleCollision(player.x, player.y, self.x, self.y, 100):
+            moveXVec = player.x - self.x
+            moveYVec = player.y - self.y
             dis = math.sqrt(math.pow(moveXVec, 2)) + math.sqrt(math.pow(moveYVec, 2))
             moveXVec += moveXVec / dis
             moveXVec += moveXVec / dis
@@ -103,7 +99,6 @@ class zombieMonster():
         self.animation()
         self.x += self.directionX * 0.1
         self.y += self.directionY * 0.1
-        self.checkPlayer()
         # 이동
 
     def animation(self):
@@ -129,11 +124,10 @@ class zombieMonster():
         else:
             self.frame = self.frame + 1
 
-    def checkPlayer(self):
-        self.player = ObjectManager.get_object(1)
-        if Collision_Manager.CollisionManager.checkCircleCollision( self.player.x,  self.player.y, self.x, self.y, 100):
-            moveXVec = self.player.x - self.x
-            moveYVec = self.player.y - self.y
+    def checkPlayer(self, player):
+        if Collision_Manager.CollisionManager.checkCircleCollision(player.x, player.y, self.x, self.y, 100):
+            moveXVec = player.x - self.x
+            moveYVec = player.y - self.y
             dis = math.sqrt(math.pow(moveXVec, 2)) + math.sqrt(math.pow(moveYVec, 2))
             moveXVec += moveXVec / dis
             moveXVec += moveXVec / dis

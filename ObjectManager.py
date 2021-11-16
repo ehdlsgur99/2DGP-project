@@ -1,5 +1,5 @@
 objects = [[],[]]
-
+UI = [[],[]]
 
 def add_object(o, layer):
     objects[layer].append(o)
@@ -8,11 +8,6 @@ def add_object(o, layer):
 def add_objects(l, layer):
     objects[layer] += l
 
-def get_objects(layer):
-    return objects[layer]
-
-def get_object(layer):
-    return objects[layer][0]
 
 def remove_object(o):
     for i in range(len(objects)):
