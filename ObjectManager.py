@@ -1,4 +1,9 @@
-objects = [[],[]]
+
+# 0 : 배경
+# 1 : 플레이어
+# 2 : 몬스터
+objects = [[],[],[]]
+
 UI = [[],[]]
 
 def add_object(o, layer):
@@ -8,6 +13,8 @@ def add_object(o, layer):
 def add_objects(l, layer):
     objects[layer] += l
 
+def get_objects(layer):
+    return objects[layer]
 
 def remove_object(o):
     for i in range(len(objects)):

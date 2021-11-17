@@ -148,10 +148,11 @@ class zombieMonster():
         pass
 
 
+# 5초 마다
 class bossMonster():
     def __init__(self):
         self.image = load_image('Resource/Monster/Boss/Idle.png')
-        self.x, self.y = random.randint(0, 1000), random.randint(0, 700)
+        self.x, self.y = 500, 350
         self.frame = 0
         self.directionX = 0.0
         self.directionY = 0.0
@@ -161,6 +162,7 @@ class bossMonster():
         self.isMove = False
         self.isVisible = True
         self.HP = 10
+        self.
         pass
 
     def update(self):
@@ -186,6 +188,12 @@ class bossMonster():
             if not self.state == 'up':
                 self.state = 'up'
                 self.image = load_image('Resource/Monster/Zombie/UpMove.png')
+        if self.state == 'rangeAttack1':
+            pass
+        elif self.state == 'rageAttack2':
+            pass
+        elif self.state == 'meteorAttack':
+            pass
         if self.frame > 3:
             self.frame = 0
         else:
