@@ -4,12 +4,17 @@ import Collision_Manager
 import object
 import time
 import KeyManager
+import ObjectManager
 
 class VillageScene():
     def __init__(self):
 
         self.bg = load_image('Resource/Stage/map.png')
-        self.player = player_object.Player()
+        if ObjectManager.Player == None:
+            ObjectManager.Player = self.player = player_object.Player()
+        else:
+            self.player = ObjectManager.Player
+
         print(self.player.state)
         self.changeScene = 'none'
         self.begin = time.time()
@@ -19,18 +24,26 @@ class VillageScene():
         self.objects = []
         self.objects.append(object.obj('Resource/Stage/aaa.png', 100, 350, 1000, 700))
         self.objects.append(object.obj('Resource/Stage/aaa.png', 300, 350, 1000, 700))
+
+        self.npc = object.obj('Resource/NPC/npc.png', 700, 400, 80, 80, 7)
+        self.npcPopUp = load_image('Resource/NPC/popup.png')
+        self.isPopUp = False
     def update(self):
         KeyManager.handle_events()
         self.player.update(self.objects)
-
+        self.npc.update()
         # 포탈에 들어갔다면?
+
+        if KeyManager.now_key_state['SPACE'] == True and self.isPopUp == False:
+            self.isPopUp = True
+        if KeyManager.now_key_state['SPACE'] == False:
+            self.isPopUp = False
 
         if Collision_Manager.CollisionManager.checkCircleCollision(self.player.x, self.player.y, 500, 100, 100):
             self.changeScene = 'DungeonScene'
         return self.changeScene
 
     def render(self):
-
         self.bg.clip_composite_draw(0, 0, 1000, 700, 0.0, 'none', 500, 350)
 
         for i in self.objects:
@@ -39,8 +52,9 @@ class VillageScene():
         self.portal.clip_composite_draw(0, 0, 100, 100, 0.0, 'none', 500, 100, 200, 200)
 
         self.player.draw()
-
-        pass
+        self.npc.drawSize(150, 150)
+        if self.isPopUp == True:
+            self.npcPopUp.draw(500, 350, 500, 400)
 
     def release(self):
         pass

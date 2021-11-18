@@ -23,13 +23,19 @@ def generateMapInfo():
     f = open('mapinfo.txt', 'w')
 
     # index 3x3 = 9 로 저장저장
+    # 0 없는 공간, 1 일반 몬스터 맵, 2 보스 맵
     mapindex = [0, 0, 0,
                 0, 0, 0,
                 0, 0, 0]
 
+    bossMapIndex = 0
     for i in range(0, 9):
         if random.randint(0, 2) != 0:
             mapindex[i] = 1
+            bossMapIndex = i
+
+    # 열린 맵 중 하나를 보스맵으로 설정
+    mapindex[bossMapIndex - 1] = 2
 
     #끊어진 길을 이어보자
     #가로 2번줄이 짤린 경우

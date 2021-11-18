@@ -43,6 +43,10 @@ class Smash(object.obj):
 class Player:
     def __init__(self):
         self.image = load_image('Resource/Player/Idle.png')
+        self.hpBar = load_image('Resource/hpbar.png')
+        self.heart = load_image('Resource/heart.png')
+        self.coins = object.obj('Resource/coin.png', 700, 650, 8, 8, 0)
+        self.coinNum = 0
         self.moveDirection = [False, False, False, False] # r-l-u-d
         self.x, self.y = 300, 300
         self.state = 'idle'
@@ -55,12 +59,21 @@ class Player:
         self.dashTime = 0.0
         self.dashSpeed = 1.0
         self.smashList = []
+        self.HP = 100
+        self.font = load_font('ENCR10B.TTF', 16)
+
 
     def draw(self):
         for i in self.smashList:
             i.draw()
         self.image.clip_composite_draw(self.frame * 48, 0, 48, 48, self.rad, 'none', self.x, self.y, 100, 100)
+        self.heart.draw(50, 650, 100, 100)
+        self.hpBar.draw(180, 655, self.HP/100 * 200, 20)
+        self.coins.drawSize(40, 40)
+        self.font.draw(750, 650, str(self.coinNum),(255, 255, 0))
 
+    def attacked(self, damage):
+        self.HP -= damage
     def smash(self):
         xDirection = 0
         yDirection = 0
@@ -87,8 +100,10 @@ class Player:
         if self.isAttack:
             for m in monsters:
                 if Collision_Manager.CollisionManager.checkCircleCollision(m.x, m.y, self.x, self.y, 30) and m.isVisible == True:
-                    print(self.isAttack)
-                    m.die()
+                    m.HP -= 5
+                    if m.HP<=0:
+                        m.die()
+                    self.coinNum += m.coin
 
     def update(self, objects):
 
@@ -116,10 +131,11 @@ class Player:
         if self.isAttack:
             return
 
+        self.coins.update()
+
 
         # dash 끝난지 확인
         if self.isDash == True :
-            print(time.time(), self.dashTime)
             if time.time() - self.dashTime > 0.1:
                 self.isDash = False
                 self.dashSpeed = 1.0

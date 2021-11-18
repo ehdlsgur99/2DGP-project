@@ -68,6 +68,7 @@ class Stage:
         self.stageMiniMap.append(load_image('Resource/Stage/smallMap.png'))
         self.stageMiniMap.append(load_image('Resource/Stage/arrow.png'))
         self.stageMiniMap.append(load_image('Resource/Stage/smallMap2.png'))
+        self.stageMiniMap.append(load_image('Resource/Stage/bossSmallMap.png'))
 
     def checkChangeScene(self):
         cnt = 0
@@ -96,7 +97,6 @@ class Stage:
 
     def drawPortal(self):
         #왼쪽 탐색
-        #print(self.nowMapIndex)
         if self.nowMapIndex != 0 and self.nowMapIndex%3 != 0:
             if self.mapInfo[self.nowMapIndex - 1] != '0':
                 #print('left')
@@ -120,7 +120,7 @@ class Stage:
             if self.mapInfo[self.nowMapIndex - 1] != '0':
                if Collision_Manager.CollisionManager.checkCircleCollision(playerInfo.x, playerInfo.y ,  50, 350,50):
                    print('update')
-                   playerInfo.x = 500
+                   playerInfo.x = 700
                    playerInfo.y = 300
                    self.mapInfo[self.nowMapIndex] = '-1'
                    self.nowMapIndex -= 1
@@ -130,7 +130,7 @@ class Stage:
             if self.mapInfo[self.nowMapIndex + 1] != '0':
                 if Collision_Manager.CollisionManager.checkCircleCollision(playerInfo.x, playerInfo.y ,  950, 350, 50):
                     print('update')
-                    playerInfo.x = 500
+                    playerInfo.x = 100
                     playerInfo.y = 300
                     self.mapInfo[self.nowMapIndex] = '-1'
                     self.nowMapIndex += 1
@@ -141,17 +141,17 @@ class Stage:
                 if Collision_Manager.CollisionManager.checkCircleCollision(playerInfo.x, playerInfo.y ,  500, 700,  50):
                     print('update')
                     playerInfo.x = 500
-                    playerInfo.y = 300
+                    playerInfo.y = 200
                     self.mapInfo[self.nowMapIndex] = '-1'
                     self.nowMapIndex -= 3
                     self.isStageChange = True
                     self.checkChangeScene()
         if self.nowMapIndex < 6 :
             if self.mapInfo[self.nowMapIndex + 3] != '0':
-                if Collision_Manager.CollisionManager.checkCircleCollision(playerInfo.x, playerInfo.y ,  500, 50, 50):
+                if Collision_Manager.CollisionManager.checkCircleCollision(playerInfo.x, playerInfo.y,  500, 50, 50):
                     print('update')
                     playerInfo.x = 500
-                    playerInfo.y = 300
+                    playerInfo.y = 600
                     self.mapInfo[self.nowMapIndex] = '-1'
                     self.nowMapIndex += 3
                     self.isStageChange = True
@@ -179,6 +179,9 @@ class Stage:
                 self.stageMiniMap[1].clip_composite_draw(0, 0, 30, 30,0.0, 'none', 65 + 35 * (i%3), 135 - (35 * int(i/3)), 20 ,20)
             elif self.mapInfo[i] == '-1':
                 self.stageMiniMap[3].clip_composite_draw(0, 0, 30, 30, 0.0, 'none', 65 + 35 * (i % 3),
+                                                         135 - (35 * int(i / 3)), 20, 20)
+            elif self.mapInfo[i] == '2':
+                self.stageMiniMap[4].clip_composite_draw(0, 0, 30, 30, 0.0, 'none', 65 + 35 * (i % 3),
                                                          135 - (35 * int(i / 3)), 20, 20)
 
         self.stageMiniMap[2].clip_composite_draw(0, 0, 15, 15,0.0, 'none', 65 + 35 * (self.nowMapIndex%3), 135 - (35 * int(self.nowMapIndex/3)), 15 ,15)

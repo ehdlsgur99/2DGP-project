@@ -1,7 +1,7 @@
 from pico2d import *
 
 now_key_state = {'LEFT': False, 'RIGHT': False, 'UP': False, 'DOWN': False, 'ATTACK': False, 'DASH' : False,
-                 'SMASH' : False}
+                 'SMASH' : False, 'SPACE' : False}
 
 def handle_events():
     events = get_events()
@@ -21,6 +21,8 @@ def handle_events():
                 now_key_state['DASH'] = True
             elif event.key == SDLK_s:
                 now_key_state['SMASH'] = True
+            elif event.key == SDLK_SPACE:
+                now_key_state['SPACE'] = True
             elif event.key == SDLK_ESCAPE:
                 running = False
         elif event.type == SDL_KEYUP:
@@ -38,3 +40,5 @@ def handle_events():
                 now_key_state['DASH'] = False
             elif event.key == SDLK_s:
                 now_key_state['SMASH'] = False
+            elif event.key == SDLK_SPACE:
+                now_key_state['SPACE'] = False

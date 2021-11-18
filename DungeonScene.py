@@ -1,5 +1,6 @@
 import random
 
+import ObjectManager
 from pico2d import *
 import player_object
 import stage
@@ -12,7 +13,7 @@ import KeyManager
 
 class DungeonScene():
     def __init__(self):
-        self.player = player_object.Player()
+        self.player = ObjectManager.Player
         self.generateMapInfo()
         self.stage = stage.Stage()
         self.changeScene = 'none'
@@ -29,6 +30,8 @@ class DungeonScene():
                     self.monsters.append(monster_object.GoblinMonster())
                 else:
                     self.monsters.append(monster_object.zombieMonster())
+        if self.stage.mapInfo[self.stage.nowMapIndex] == '2':
+            self.monsters.append(monster_object.bossMonster())
 
 
 

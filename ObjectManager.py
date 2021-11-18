@@ -1,3 +1,4 @@
+import player_object
 
 # 0 : 배경
 # 1 : 플레이어
@@ -5,6 +6,8 @@
 objects = [[],[],[]]
 
 UI = [[],[]]
+
+Player = None
 
 def add_object(o, layer):
     objects[layer].append(o)
