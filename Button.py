@@ -1,6 +1,8 @@
 from pico2d import *
 import object
 
+
+
 class Button(object.obj):
     def __init__(self,path1, path2, x, y, width, height, frame, func): # 버튼 이미지 path 두개를 받아옴
         super().__init__(path1, x, y, width, height, frame)
