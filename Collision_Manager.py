@@ -1,6 +1,5 @@
 from pico2d import *
 import object
-
 class CollisionManager:
     _sing = None
 

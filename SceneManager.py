@@ -5,9 +5,6 @@ import DungeonScene
 import IntroScene
 
 class Scene_Manager:
-
-
-
     def __init__(self):
         self.index = 0
         self.nowScene = IntroScene.IntroScene()
