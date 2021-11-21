@@ -10,7 +10,6 @@ import time
 import monster_object
 import KeyManager
 
-
 class DungeonScene():
     def __init__(self):
         self.player = ObjectManager.Player

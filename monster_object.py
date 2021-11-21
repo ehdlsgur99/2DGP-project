@@ -7,7 +7,6 @@ from pico2d import *
 
 import object
 
-
 class GoblinMonster():
     def __init__(self):
         self.image = load_image('Resource/Monster/Goblin/Idle.png')

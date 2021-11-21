@@ -1,5 +1,3 @@
-from pico2d import *
-
 import VillageScene
 import DungeonScene
 import IntroScene

@@ -1,5 +1,3 @@
-import player_object
-
 # 0 : 배경
 # 1 : 플레이어
 # 2 : 몬스터
@@ -11,7 +9,6 @@ Player = None
 
 def add_object(o, layer):
     objects[layer].append(o)
-
 
 def add_objects(l, layer):
     objects[layer] += l
