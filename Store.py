@@ -1,7 +1,6 @@
 import object
 import item
 
-
 class Store:
     def __init__(self):
         self.items = []
@@ -15,7 +14,7 @@ class Store:
         for i in self.items:
             i.update()
 
-    def render(self):
+    def draw(self):
         for i in self.items:
             i.update()
         pass

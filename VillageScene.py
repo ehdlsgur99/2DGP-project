@@ -5,6 +5,7 @@ import object
 import time
 import KeyManager
 import ObjectManager
+import Store
 
 class VillageScene():
     def __init__(self):
@@ -21,6 +22,9 @@ class VillageScene():
 
         self.portal = load_image('Resource/Stage/portal.png')
 
+        self.store = Store.Store()
+        self.store.createItem()
+
         self.objects = []
         self.objects.append(object.obj('Resource/Stage/aaa.png', 100, 350, 1000, 700))
         self.objects.append(object.obj('Resource/Stage/aaa.png', 300, 350, 1000, 700))
@@ -32,6 +36,7 @@ class VillageScene():
         KeyManager.handle_events()
         self.player.update(self.objects)
         self.npc.update()
+        self.store.update()
         # 포탈에 들어갔다면?
 
         if KeyManager.now_key_state['SPACE'] == True and self.isPopUp == False:
@@ -55,6 +60,9 @@ class VillageScene():
         self.npc.drawSize(150, 150)
         if self.isPopUp == True:
             self.npcPopUp.draw(500, 350, 500, 400)
+            self.store.draw()
+
+
 
     def release(self):
         pass
