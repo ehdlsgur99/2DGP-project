@@ -9,7 +9,6 @@ import Store
 
 class VillageScene():
     def __init__(self):
-
         self.bg = load_image('Resource/Stage/map.png')
         if ObjectManager.Player == None:
             ObjectManager.Player = self.player = player_object.Player()
@@ -61,8 +60,6 @@ class VillageScene():
         if self.isPopUp == True:
             self.npcPopUp.draw(500, 350, 500, 400)
             self.store.draw()
-
-
 
     def release(self):
         pass

@@ -8,7 +8,6 @@ class Store:
     #  아이템 생성
     def createItem(self):
         self.items.append(item.item("", 0, 0, 100, 100, 0, 1000))
-        pass
 
     def update(self):
         for i in self.items:
@@ -17,4 +16,3 @@ class Store:
     def draw(self):
         for i in self.items:
             i.update()
-        pass
