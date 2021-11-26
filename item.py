@@ -2,7 +2,6 @@ import object
 from pico2d import *
 
 class item():
-
     def __init__(self, path, x, y, width, height, frame = 0, gold):
         self.x = x
         self.y = y

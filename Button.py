@@ -8,7 +8,6 @@ class Button(object.obj):
         self.path1 = path1
         self.path2 = path2
         self.callbackfunc = func()
-        pass
 
     def checkPos(self, mouseXPos, mouseYPos):
         if mouseXPos > self.x and mouseXPos <self.x + self.width and mouseYPos > self.y and mouseYPos < self.y + self.height:
