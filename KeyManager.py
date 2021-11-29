@@ -3,9 +3,22 @@ from pico2d import *
 now_key_state = {'LEFT': False, 'RIGHT': False, 'UP': False, 'DOWN': False, 'ATTACK': False, 'DASH' : False,
                  'SMASH' : False, 'SPACE' : False}
 
+mouseXPos, mouseYPos = 0, 0
+mouseDown = False
+
 def handle_events():
+
+
     events = get_events()
     for event in events:
+        if event.type == SDL_MOUSEMOTION:
+            mouseXPos, mouseYPos = event.x, event.y
+        if event.type == SDL_MOUSEBUTTONDOWN:
+            mouseDown = True
+        elif event.type == SDL_MOUSEBUTTONUP:
+            mouseDown = False
+
+
         if event.type == SDL_KEYDOWN:
             if event.key == SDLK_RIGHT:
                 now_key_state['RIGHT'] = True

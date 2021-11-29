@@ -1,7 +1,8 @@
 from pico2d import *
 import object
+import KeyManager
 
-class Button(object.obj):
+class button(object.obj):
     def __init__(self,path1, path2, x, y, width, height, frame, func): # 버튼 이미지 path 두개를 받아옴
         super().__init__(path1, x, y, width, height, frame)
         self.isOn = False
@@ -9,8 +10,15 @@ class Button(object.obj):
         self.path2 = path2
         self.callbackfunc = func()
 
-    def checkPos(self, mouseXPos, mouseYPos):
-        if mouseXPos > self.x and mouseXPos <self.x + self.width and mouseYPos > self.y and mouseYPos < self.y + self.height:
+    def update(self):
+        if KeyManager.mouseDown == True:
+            self.checkPos()
+        if KeyManager.mouseDown == False and  self.isOn == True:
+            self.callbackfunc()
+
+    def checkPos(self):
+        if KeyManager.mouseXPos > self.x and KeyManager.mouseXPos <self.x + self.width and KeyManager.mouseYPos > self.y and \
+                KeyManager.mouseYPos < self.y + self.height:
                 if self.isOn == False:
                     self.image = load_image(self.path2)
                 self.isOn = True

@@ -1,15 +1,23 @@
 import object
+import Button
 from pico2d import *
 
+ITEM_TYPE = {''}
+
 class item():
-    def __init__(self, path, x, y, width, height, frame = 0, gold):
+
+    def __init__(self, type, path, x, y, width, height, frame = 0, gold = 0 ):
         self.x = x
         self.y = y
+        self.type = type
         self.width = width
         self.height = height
         self.gold = gold
-        self.obj = object.obj(path, x, y, width, height, frame)
+        self.obj = Button.button(path+'1.png', path+'2.png', x, y, width, height, frame, self.getNowItem())
         self.font = load_font('ENCR10B.TTF', 16)
+
+    def getNowItem(self):
+        return self
 
     def update(self):
         self.obj.update()
