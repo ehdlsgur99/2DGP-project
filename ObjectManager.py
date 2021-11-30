@@ -22,7 +22,6 @@ def remove_object(o):
             objects[i].remove(o)
             del o
 
-
 def clear():
     for o in all_objects():
         del o
@@ -33,4 +32,3 @@ def all_objects():
     for i in range(len(objects)):
         for o in objects[i]:
             yield o
-
