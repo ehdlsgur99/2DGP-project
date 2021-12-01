@@ -21,8 +21,7 @@ class VillageScene():
 
         self.portal = load_image('Resource/Stage/portal.png')
 
-        self.store = Store.Store()
-        self.store.createItem()
+        self.store = Store.store()
 
         self.objects = []
         self.objects.append(object.obj('Resource/Stage/aaa.png', 100, 350, 1000, 700))
