@@ -4,8 +4,7 @@ from pico2d import *
 
 ITEM_TYPE = {''}
 
-class item():
-
+class item:
     def __init__(self, type, path, x, y, width, height, frame = 0, gold = 0 ):
         self.x = x
         self.y = y
