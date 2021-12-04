@@ -13,4 +13,3 @@ while running:
     SM.render()
 
     update_canvas()
-    delay(0.05)
