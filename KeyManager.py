@@ -16,7 +16,6 @@ def handle_events():
         elif event.type == SDL_MOUSEBUTTONUP:
             mouseDown = False
 
-
         if event.type == SDL_KEYDOWN:
             if event.key == SDLK_RIGHT:
                 now_key_state['RIGHT'] = True

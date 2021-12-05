@@ -32,8 +32,6 @@ class DungeonScene():
         if self.stage.mapInfo[self.stage.nowMapIndex] == '2':
             self.monsters.append(monster_object.bossMonster())
 
-
-
     def generateMapInfo(self):
         MapInfo.generateMapInfo()
         pass
