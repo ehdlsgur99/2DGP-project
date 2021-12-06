@@ -34,7 +34,6 @@ class DungeonScene():
 
     def generateMapInfo(self):
         MapInfo.generateMapInfo()
-        pass
 
     def update(self):
         KeyManager.handle_events()
