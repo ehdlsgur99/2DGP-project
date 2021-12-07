@@ -8,6 +8,10 @@ mouseDown = False
 
 def handle_events():
     events = get_events()
+    global mouseXPos
+    global mouseYPos
+    global mouseDown
+
     for event in events:
         if event.type == SDL_MOUSEMOTION:
             mouseXPos, mouseYPos = event.x, event.y
