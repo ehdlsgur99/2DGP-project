@@ -1,7 +1,7 @@
 from pico2d import *
 
 now_key_state = {'LEFT': False, 'RIGHT': False, 'UP': False, 'DOWN': False, 'ATTACK': False, 'DASH' : False,
-                 'SMASH' : False, 'SPACE' : False}
+                 'SMASH' : False, 'SPACE' : False, 'Inventory' : False, 'STATUS' : False}
 
 mouseXPos, mouseYPos = 0, 0
 mouseDown = False
@@ -39,6 +39,10 @@ def handle_events():
                 now_key_state['SPACE'] = True
             elif event.key == SDLK_ESCAPE:
                 running = False
+            elif event.key == SDLK_i:
+                now_key_state['Inventory'] = True
+            elif event.key == SDLK_k:
+                now_key_state['STATUS'] = True
         elif event.type == SDL_KEYUP:
             if event.key == SDLK_RIGHT:
                 now_key_state['RIGHT'] = False
@@ -56,3 +60,7 @@ def handle_events():
                 now_key_state['SMASH'] = False
             elif event.key == SDLK_SPACE:
                 now_key_state['SPACE'] = False
+            elif event.key == SDLK_i:
+                now_key_state['Inventory'] = False
+            elif event.key == SDLK_k:
+                now_key_state['STATUS'] = False

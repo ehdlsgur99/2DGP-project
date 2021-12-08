@@ -1,6 +1,7 @@
 import VillageScene
 import DungeonScene
 import IntroScene
+import time
 
 class Scene_Manager:
     def __init__(self):
@@ -15,6 +16,7 @@ class Scene_Manager:
             this.nowScene = VillageScene.VillageScene()
         elif sceneName == 'DungeonScene':
             this.nowScene = DungeonScene.DungeonScene()
+
 
     def update(this):
         path = this.nowScene.update()

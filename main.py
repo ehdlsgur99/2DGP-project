@@ -1,5 +1,6 @@
 from pico2d import *
 import SceneManager
+import ObjectManager
 
 open_canvas(1000, 700)
 
@@ -11,5 +12,7 @@ while running:
 
     SM.update()
     SM.render()
+
+    delay(0.05)
 
     update_canvas()

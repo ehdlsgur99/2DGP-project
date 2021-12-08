@@ -12,8 +12,10 @@ class button(object.obj):
         self.dHeight = dHeight
         self.callbackfunc = func
 
+
     def update(self):
         if KeyManager.mouseDown == True:
+
             self.checkPos()
         if KeyManager.mouseDown == False and  self.isOn == True:
             self.callbackfunc()

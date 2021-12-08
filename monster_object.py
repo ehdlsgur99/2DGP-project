@@ -178,6 +178,9 @@ class bossMonster():
         self.skillTime = time.time()
         self.isSkill = False
         self.coin= 1000
+        self.attack_sound = load_wav('Resource/Sound/me.wav')
+        self.attack_sound.set_volume(100)
+
         pass
 
     def die(self):
@@ -211,7 +214,7 @@ class bossMonster():
                     print(i.x, i.y, ObjectManager.Player.x, ObjectManager.Player.y)
                     if Collision_Manager.CollisionManager.checkCircleCollision(i.x, i.y, ObjectManager.Player.x,ObjectManager.Player.y, 100 ) == True:
                         ObjectManager.Player.attacked(10)
-
+                self.attack_sound.play()
                 self.meteors.clear()
 
                 #플레이어와 충돌 체크

@@ -10,6 +10,10 @@ import Inventory
 
 class VillageScene():
     def __init__(self):
+        self.bgm = load_music('Resource/Sound/peace.mp3')
+        self.bgm.set_volume(64)
+        self.bgm.repeat_play()
+
         self.bg = load_image('Resource/Stage/map.png')
         if ObjectManager.Player == None:
             ObjectManager.Player = self.player = player_object.Player()
@@ -55,11 +59,13 @@ class VillageScene():
         # 포탈 출력
         self.portal.clip_composite_draw(0, 0, 100, 100, 0.0, 'none', 500, 100, 200, 200)
 
-        self.player.draw()
+
         self.npc.drawSize(150, 150)
+
         if self.isPopUp == True:
             self.npcPopUp.draw(300, 350, 600, 500)
             self.store.draw()
             Inventory.inventory.instance().render()
+        self.player.draw()
     def release(self):
         pass

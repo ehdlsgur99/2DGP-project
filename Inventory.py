@@ -1,5 +1,7 @@
 import item
 import object
+import KeyManager
+import status
 
 class inventory:
     _instance = None
@@ -22,11 +24,30 @@ class inventory:
     def update(self):
         for i in self.items:
             i.update()
+            if KeyManager.mouseDown == True:
+                if KeyManager.mouseXPos > i.image.x - 30 / 2 and KeyManager.mouseXPos < i.image.x + 30 / 2 and KeyManager.mouseYPos > i.image.y - 30 / 2 and KeyManager.mouseYPos < i.image.y + 30 / 2:
+                    status.Status.instance().addWeapon(i)
+                    KeyManager.mouseDown = False
+                    self.items.remove(i)
+                    print(self.items)
+                    return
+
+
+
 
     def render(self):
         self.popup.drawSize(300, 500)
+        count = 0
+
         for i in self.items:
+
+            i.image.x = i.x = 650 + 75 + (count%3) * 75
+            i.image.y = i.y = 500 - int(count/3) * 75
+            i.textBox.x = i.image.x - 200
+            i.textBox.y = i.image.y
+
             i.render()
+            count += 1
         pass
 
     def release(self):

@@ -12,6 +12,10 @@ import KeyManager
 
 class DungeonScene():
     def __init__(self):
+        self.bgm = load_music('Resource/Sound/dungeon.mp3')
+        self.bgm.set_volume(64)
+        self.bgm.repeat_play()
+
         self.player = ObjectManager.Player
         self.generateMapInfo()
         self.stage = stage.Stage()

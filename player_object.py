@@ -5,6 +5,7 @@ import Collision_Manager
 import KeyManager
 import object
 import Inventory
+import status
 
 class Smash(object.obj):
     def __init__(self, path, x, y, width, height, xDirection, yDirection, xSize, ySize):
@@ -48,7 +49,7 @@ class Player:
         self.hpBar = load_image('Resource/hpbar.png')
         self.heart = load_image('Resource/heart.png')
         self.coins = object.obj('Resource/coin.png', 700, 650, 8, 8, 0)
-        self.coinNum = 0
+        self.coinNum = 100000
         self.moveDirection = [False, False, False, False] # r-l-u-d
         self.x, self.y = 300, 300
         self.state = 'idle'
@@ -64,6 +65,9 @@ class Player:
         self.HP = 100
         self.font = load_font('ENCR10B.TTF', 16)
 
+        self.attack_sound = load_wav('Resource/Sound/attack.wav')
+        self.attack_sound.set_volume(100)
+
 
     def draw(self):
         for i in self.smashList:
@@ -73,6 +77,10 @@ class Player:
         self.hpBar.draw(180, 655, self.HP/100 * 200, 20)
         self.coins.drawSize(40, 40)
         self.font.draw(750, 650, str(self.coinNum),(255, 255, 0))
+        if KeyManager.now_key_state['Inventory'] == True:
+            Inventory.inventory.instance().render()
+        if KeyManager.now_key_state['STATUS'] == True:
+            status.Status.instance().render()
 
     def attacked(self, damage):
         self.HP -= damage
@@ -181,6 +189,7 @@ class Player:
             self.update_state('idle')
 
         if KeyManager.now_key_state['ATTACK'] == True:
+            self.attack_sound.play()
             if self.state != 'attack':
                 self.update_state('attack')
 
@@ -191,6 +200,11 @@ class Player:
         if KeyManager.now_key_state['SMASH'] == True:
             if self.state != 'smash':
                 self.smash()
+
+        if KeyManager.now_key_state['Inventory'] == True:
+            Inventory.inventory.instance().update()
+        if KeyManager.now_key_state['STATUS'] == True:
+            status.Status.instance().update()
 
 
     def update_state(self, direction):
