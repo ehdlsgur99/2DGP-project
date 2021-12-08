@@ -14,7 +14,7 @@ def handle_events():
 
     for event in events:
         if event.type == SDL_MOUSEMOTION:
-            mouseXPos, mouseYPos = event.x, event.y
+            mouseXPos, mouseYPos = event.x, (event.y - 700) * -1
         if event.type == SDL_MOUSEBUTTONDOWN:
             mouseDown = True
         elif event.type == SDL_MOUSEBUTTONUP:

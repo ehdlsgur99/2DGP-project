@@ -6,6 +6,7 @@ import time
 import KeyManager
 import ObjectManager
 import Store
+import Inventory
 
 class VillageScene():
     def __init__(self):
@@ -57,8 +58,8 @@ class VillageScene():
         self.player.draw()
         self.npc.drawSize(150, 150)
         if self.isPopUp == True:
-            self.npcPopUp.draw(500, 350, 500, 400)
+            self.npcPopUp.draw(300, 350, 600, 500)
             self.store.draw()
-
+            Inventory.inventory.instance().render()
     def release(self):
         pass

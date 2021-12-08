@@ -5,7 +5,7 @@ class obj():
         self.image = load_image(path)
         self.x, self.y = x,y
         self.width = width
-        self.height =  height
+        self.height = height
         self.isVisible = True
         self.frame = frame
         self.nowFrame = 0

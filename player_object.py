@@ -4,12 +4,14 @@ from pico2d import *
 import Collision_Manager
 import KeyManager
 import object
+import Inventory
 
 class Smash(object.obj):
     def __init__(self, path, x, y, width, height, xDirection, yDirection, xSize, ySize):
         super().__init__(path, x, y, width, height, 0)
         self.xDir, self.yDir = xDirection, yDirection
         self.xSize, self.ySize = xSize, ySize
+
     def draw(self):
         if self.xDir == 1 and self.yDir ==1:
             self.image.clip_composite_draw(0, 0, self.width, self.height, math.radians(-45), 'none', self.x, self.y,
