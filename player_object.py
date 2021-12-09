@@ -68,7 +68,6 @@ class Player:
         self.attack_sound = load_wav('Resource/Sound/attack.wav')
         self.attack_sound.set_volume(100)
 
-
     def draw(self):
         for i in self.smashList:
             i.draw()
@@ -205,6 +204,8 @@ class Player:
             Inventory.inventory.instance().update()
         if KeyManager.now_key_state['STATUS'] == True:
             status.Status.instance().update()
+        if KeyManager.now_key_state['HPMINUS'] == True:
+            self.HP -= 10
 
 
     def update_state(self, direction):

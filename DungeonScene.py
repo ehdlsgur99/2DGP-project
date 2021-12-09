@@ -52,9 +52,11 @@ class DungeonScene():
             i.update()
             i.checkPlayer(self.player)
 
-        if self.changeScene != 'none':
+
+        if self.player.HP <= 0:
+            self.changeScene = 'OuttroScene'
             return self.changeScene
-        return 'none'
+        return self.changeScene
 
     def render(self):
 

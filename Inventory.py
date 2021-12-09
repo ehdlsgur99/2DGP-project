@@ -1,3 +1,4 @@
+import ObjectManager
 import item
 import object
 import KeyManager
@@ -26,10 +27,17 @@ class inventory:
             i.update()
             if KeyManager.mouseDown == True:
                 if KeyManager.mouseXPos > i.image.x - 30 / 2 and KeyManager.mouseXPos < i.image.x + 30 / 2 and KeyManager.mouseYPos > i.image.y - 30 / 2 and KeyManager.mouseYPos < i.image.y + 30 / 2:
-                    status.Status.instance().addWeapon(i)
-                    KeyManager.mouseDown = False
-                    self.items.remove(i)
-                    print(self.items)
+                    if i.type != 'Potion' :
+                        status.Status.instance().addWeapon(i)
+                        self.items.remove(i)
+                        KeyManager.mouseDown = False
+                    else:
+                        ObjectManager.Player.HP += i.potionVal
+                        if ObjectManager.Player.HP > 100:
+                            ObjectManager.Player.HP = 100
+                        self.items.remove(i)
+
+
                     return
 
 
