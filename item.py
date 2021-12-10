@@ -25,7 +25,7 @@ class item:
         self.createStatus()
         self.isBuy = False
         # 설명 텍스트 박스 설정
-        self.textBox = object.obj('resource/item/textbox.png', x+ 150, y, 1027, 564, 0)
+        self.textBox = object.obj('resource/item/textbox.png', x + 150, y, 1027, 564, 0)
     def createStatus(self):
         if self.grade == 'Legend':
             self.power = 100

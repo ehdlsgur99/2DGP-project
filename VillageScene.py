@@ -66,6 +66,9 @@ class VillageScene():
             self.npcPopUp.draw(300, 350, 600, 500)
             self.store.draw()
             Inventory.inventory.instance().render()
-        self.player.draw()
+            self.player.draw()
+        else:
+            self.player.draw()
+
     def release(self):
         pass
